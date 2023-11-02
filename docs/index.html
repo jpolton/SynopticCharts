@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Displaying Surface Pressure Charts</title>
+
+    <script type="text/javascript">
+
+        function createTable()
+        {
+            let w = 5; // up to 5-day forecasts. COLUMNS
+            let h = 5; // number of old forecasts to compare against. ROWS
+
+            let folderPath = "charts/";
+            let today = new Date();
+
+            // Determine whether to start Today at 00:00 (offset=0) or 12:00 (offset=1)
+            let offset = 0;
+            let now_hour = today.getUTCHours();
+            if (now_hour > 17){
+                offset = 1;
+            }
+            else{
+                offset = 0;
+            }
+
+            //let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            let yyyy = today.getFullYear();
+
+            //let datetime_str = yyyy + '-' + mm + '-' + dd;
+
+            let table = document.createElement('table');
+            for(let j = 0; j < h; j++) { // loop over forecast issue date
+
+                let row = table.insertRow(j);
+                for(let i = 0; i < w; i++) { // loop over 24hr day
+
+                    let dd = String(today.getDate() + i).padStart(2, '0');
+
+                    for(let k = 0; k < 2; k++) { // loop over 12hr cycle
+                        let hh = String(((k + offset) % 2) * 12).padStart(2, '0');
+                        // update day number if 12hr cycle starts at 12:00
+                        if ((k + offset) * 12 < 24) {
+                            dd = String(today.getDate() + i ).padStart(2, '0');
+                        }
+                        else {
+                            dd = String(today.getDate() + i + 1).padStart(2, '0');
+                        }
+                        let datetime_str = yyyy + '-' + mm + '-' + dd + "T" + hh + ":00:00Z";
+
+                        let img = document.createElement("img");
+                        img.src = folderPath + datetime_str + "_forecastperiod_" + (j + 2*i + k) * 12 + ".gif";
+                        img.height = 150;
+                        let td = row.insertCell(2*i + k);
+
+                        // Add image to cell
+                        td.appendChild(img);
+
+                        // Append a text node to the cell
+                        //let newText = document.createTextNode(datetime_str + "_FP_" + (j + 2*i + k) * 12 + ".gif");
+                        //td.appendChild(newText);
+                    }
+                }
+            }
+            document.body.appendChild(table);
+
+            // Insert a row at the end of the table
+            let newRow = table.insertRow(-1);
+
+            // Insert a cell in the row at index 0
+            let newCell = newRow.insertCell(0);
+
+
+            // Append a text node to the cell
+            let newText = document.createTextNode("New bottom row. hr:"+String(now_hour)+ "offset:"+String(offset));
+            newCell.appendChild(newText);
+
+
+        }
+
+        window.onload = createTable;
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>
+
