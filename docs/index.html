@@ -68,11 +68,14 @@
             let newRow = table.insertRow(-1); // Insert a row at the end of the table
             let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
 
+            // Create anchor element. 
+            let a = document.createElement('a');
             // Append a text node to the cell
             let link = document.createTextNode("Return to code repo: github.com/jpolton/SynopticCharts");
-            newCell.appendChild(link);
-            newCell.title = "link to repo";
-            newCell.href = "https://github.com/jpolton/SynopticCharts";
+            a.appendChild(link);
+            a.title = "link to repo";
+            a.href = "https://github.com/jpolton/SynopticCharts";
+            newCell.appendChild(a);
             
             document.body.appendChild(table);
 
