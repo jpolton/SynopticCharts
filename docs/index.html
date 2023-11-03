@@ -70,8 +70,9 @@
             let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
 
             // Append a text node to the cell
-            let newText = document.createTextNode("Return to code repo: ");
-            newCell.appendChild(newText);
+            let link = document.createTextNode("Return to code repo: github.com/jpolton/SynopticCharts");
+            newCell.appendChild(link);
+            newCell.href = "https://github.com/jpolton/SynopticCharts";
 
         }
 
@@ -79,10 +80,8 @@
 
     </script>
 </head>
-    <a href="https://github.com/jpolton/SynopticCharts">repo</a>
+    
 <body>
-
-
 </body>
 </html>
 
