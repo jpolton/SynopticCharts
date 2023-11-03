@@ -63,7 +63,6 @@
                     }
                 }
             }
-            document.body.appendChild(table);
             
             // Add link to repo
             let newRow = table.insertRow(-1); // Insert a row at the end of the table
@@ -72,7 +71,10 @@
             // Append a text node to the cell
             let link = document.createTextNode("Return to code repo: github.com/jpolton/SynopticCharts");
             newCell.appendChild(link);
+            newCell.title = "link to repo";
             newCell.href = "https://github.com/jpolton/SynopticCharts";
+            
+            document.body.appendChild(table);
 
         }
 
