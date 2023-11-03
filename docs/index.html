@@ -16,7 +16,7 @@
             // Determine whether to start Today at 00:00 (offset=0) or 12:00 (offset=1)
             let offset = 0;
             let now_hour = today.getUTCHours();
-            if (now_hour > 19){
+            if (now_hour > 19){  // Should by synchronised with cronjob
                 offset = 1;
             }
             else{
