@@ -64,6 +64,14 @@
                 }
             }
             document.body.appendChild(table);
+            
+            // Add link to repo
+            let newRow = table.insertRow(-1); // Insert a row at the end of the table
+            let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
+
+            // Append a text node to the cell
+            let newText = document.createTextNode("Return to code repo: ");
+            newCell.appendChild(newText);
 
         }
 
@@ -71,6 +79,7 @@
 
     </script>
 </head>
+    <a href="https://github.com/jpolton/SynopticCharts">repo</a>
 <body>
 
 
