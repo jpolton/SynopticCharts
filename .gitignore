@@ -1,5 +1,7 @@
 # keys
 datapoint_api/config_keys.py
+docs/charts/2023-*
+docs/charts/2024-*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
