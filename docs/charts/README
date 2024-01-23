@@ -3,3 +3,5 @@ Directory to store charts.
 filename format: yyyy-mm-ddThh:00:00Z_forecastperiod_X.gif
 where the date is the time for which the forecast is made and X is the length
 of the forecast period in hours.
+
+Files are manually moved into gitignored monthly folders, once the month has passed.
