@@ -37,6 +37,7 @@ jobs:
           git config --global user.email 'action@github.com'
           git add -A
           git checkout main
+          git pull
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
           git push
       - name: Check run status
