@@ -30,7 +30,7 @@ jobs:
           echo Running File...
           status=$(python main.py > log.txt 2>&1; echo $?)
           cat log.txt
-          echo ::set-output name=status::$status
+          echo status::$status >> $GITHUB_OUTPUT
       - name: Commit log
         run: |
           git config --global user.name 'GitHub Action'
