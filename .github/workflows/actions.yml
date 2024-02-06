@@ -1,9 +1,9 @@
 name: run main.py
 
-on:
-  schedule:
-    - cron: '50 20 * * *' # At 19:30 everyday
-    - cron: '30  7 * * *' # At 07:30 everyday
+#on:
+#  schedule:
+#    - cron: '50 20 * * *' # At 19:30 everyday
+#    - cron: '30  7 * * *' # At 07:30 everyday
 
 jobs:
   build:
