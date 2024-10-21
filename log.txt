@@ -1,14 +1,65 @@
 200
 200
 200
-200
-200
-200
-200
-200
-Failed request for forecast period 96
-File docs/charts/2024-10-24T12:00:00Z_forecastperiod_84.gif already exists
-Forecast 96 does not exist
-Failed request for forecast period 120
-File docs/charts/2024-10-24T12:00:00Z_forecastperiod_84.gif already exists
-Forecast 120 does not exist
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/http/client.py", line 1377, in getresponse
+    response.begin()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/http/client.py", line 320, in begin
+    version, status, reason = self._read_status()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/http/client.py", line 281, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/socket.py", line 716, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/urllib3/connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/http/client.py", line 1377, in getresponse
+    response.begin()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/http/client.py", line 320, in begin
+    version, status, reason = self._read_status()
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/http/client.py", line 281, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/socket.py", line 716, in readinto
+    return self._sock.recv_into(b)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/SynopticCharts/SynopticCharts/main.py", line 42, in <module>
+    tt.get_chart( hrs=hrs)
+  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 132, in get_chart
+    request_raw = requests.get(url)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/requests/adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
