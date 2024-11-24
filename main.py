@@ -25,9 +25,30 @@ Example usage:
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath("datapoint_api/datapoint_api.py")))
 import datetime
-#from datapoint_api import CHART
-from datapoint_api.datapoint_api import CHART
+import shutil
+try:
+    from datapoint_api import CHART
+except:
+    from datapoint_api.datapoint_api import CHART
 
+def move_old_files(source_folder, target_folder, keep=100):
+    # Ensure the target folder exists
+    if not os.path.exists(target_folder):
+        os.makedirs(target_folder)
+
+    # List all files in the source folder
+    files = [os.path.join(source_folder, f) for f in os.listdir(source_folder) if os.path.isfile(os.path.join(source_folder, f))]
+    
+    # Sort files by modification time (newest first)
+    files.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+    
+    # Get the files to move (all but the newest 'keep' files)
+    files_to_move = files[keep:]
+
+    # Move the files
+    for file_path in files_to_move:
+        shutil.move(file_path, target_folder)
+        print(f"Moved: {file_path} -> {target_folder}")
 
 
 if __name__ == '__main__':
@@ -40,6 +61,10 @@ if __name__ == '__main__':
         #hrs = 12
         #tt.get_chart( hrs=hrs, ofile="charts/output"+str(hrs)+".gif")
         tt.get_chart( hrs=hrs)
+
+    source_folder = "docs/charts"
+    target_folder = "docs/charts/archive"
+    move_old_files(source_folder, target_folder, keep=100)
 
 
 
