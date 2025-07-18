@@ -1,14 +1,10 @@
-File docs/charts/2025-07-17T00:00:00Z_forecastperiod_0.gif already exists
-File docs/charts/2025-07-17T12:00:00Z_forecastperiod_12.gif already exists
-File docs/charts/2025-07-18T00:00:00Z_forecastperiod_24.gif already exists
-File docs/charts/2025-07-18T12:00:00Z_forecastperiod_36.gif already exists
-File docs/charts/2025-07-19T00:00:00Z_forecastperiod_48.gif already exists
-File docs/charts/2025-07-19T12:00:00Z_forecastperiod_60.gif already exists
-File docs/charts/2025-07-20T00:00:00Z_forecastperiod_72.gif already exists
-File docs/charts/2025-07-20T12:00:00Z_forecastperiod_84.gif already exists
-Failed request for forecast period 96
-File docs/charts/2025-07-20T12:00:00Z_forecastperiod_84.gif already exists
-Forecast 96 does not exist
-Failed request for forecast period 120
-File docs/charts/2025-07-20T12:00:00Z_forecastperiod_84.gif already exists
-Forecast 120 does not exist
+Traceback (most recent call last):
+  File "/home/runner/work/SynopticCharts/SynopticCharts/main.py", line 63, in <module>
+    tt.get_chart( hrs=hrs)
+  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 122, in get_chart
+    cls.get_metadata(hrs = hrs)
+  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 77, in get_metadata
+    data = xmltodict.parse(request_raw.content)['BWSurfacePressureChartList']['BWSurfacePressureChart']
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/xmltodict.py", line 359, in parse
+    parser.Parse(xml_input, True)
+xml.parsers.expat.ExpatError: mismatched tag: line 9, column 2
