@@ -8,7 +8,5 @@ File docs/charts/2025-07-26T12:00:00Z_forecastperiod_72.gif already exists
 Failed request for forecast period 84
 File docs/charts/2025-07-26T12:00:00Z_forecastperiod_72.gif already exists
 Forecast 84 does not exist
-500
-500
-Moved: docs/charts/2025-07-17T12:00:00Z_forecastperiod_60.gif -> docs/charts/archive
-Moved: docs/charts/2025-07-17T12:00:00Z_forecastperiod_72.gif -> docs/charts/archive
+File docs/charts/2025-07-27T12:00:00Z_forecastperiod_96.gif already exists
+File docs/charts/2025-07-28T12:00:00Z_forecastperiod_120.gif already exists
