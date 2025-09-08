@@ -5,18 +5,17 @@
 200
 200
 200
+Failed request for forecast period 84
+File docs/charts/2025-09-11T12:00:00Z_forecastperiod_72.gif already exists
+Forecast 84 does not exist
 200
-Failed request for forecast period 96
-File docs/charts/2025-09-11T12:00:00Z_forecastperiod_84.gif already exists
-Forecast 96 does not exist
-Failed request for forecast period 120
-File docs/charts/2025-09-11T12:00:00Z_forecastperiod_84.gif already exists
-Forecast 120 does not exist
-Moved: docs/charts/2025-08-27T00:00:00Z_forecastperiod_36.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-27T00:00:00Z_forecastperiod_24.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-27T00:00:00Z_forecastperiod_0.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-27T00:00:00Z_forecastperiod_12.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-26T12:00:00Z_forecastperiod_84.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-26T12:00:00Z_forecastperiod_72.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-26T12:00:00Z_forecastperiod_60.gif -> docs/charts/archive
-Moved: docs/charts/2025-08-26T12:00:00Z_forecastperiod_48.gif -> docs/charts/archive
+200
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_72.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_84.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_48.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_36.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_24.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_12.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T12:00:00Z_forecastperiod_0.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T00:00:00Z_forecastperiod_60.gif -> docs/charts/archive
+Moved: docs/charts/2025-08-27T00:00:00Z_forecastperiod_72.gif -> docs/charts/archive
