@@ -1,10 +1,22 @@
-Traceback (most recent call last):
-  File "/home/runner/work/SynopticCharts/SynopticCharts/main.py", line 63, in <module>
-    tt.get_chart( hrs=hrs)
-  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 122, in get_chart
-    cls.get_metadata(hrs = hrs)
-  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 77, in get_metadata
-    data = xmltodict.parse(request_raw.content)['BWSurfacePressureChartList']['BWSurfacePressureChart']
-  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/xmltodict.py", line 368, in parse
-    parser.Parse(xml_input, True)
-xml.parsers.expat.ExpatError: mismatched tag: line 9, column 2
+200
+200
+200
+200
+200
+200
+200
+200
+Failed request for forecast period 96
+File docs/charts/2025-09-26T12:00:00Z_forecastperiod_84.gif already exists
+Forecast 96 does not exist
+Failed request for forecast period 120
+File docs/charts/2025-09-26T12:00:00Z_forecastperiod_84.gif already exists
+Forecast 120 does not exist
+Moved: docs/charts/2025-09-05T00:00:00Z_forecastperiod_48.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-04T12:00:00Z_forecastperiod_36.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-04T12:00:00Z_forecastperiod_24.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-04T00:00:00Z_forecastperiod_24.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-04T12:00:00Z_forecastperiod_120.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-04T00:00:00Z_forecastperiod_12.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-03T12:00:00Z_forecastperiod_12.gif -> docs/charts/archive
+Moved: docs/charts/2025-09-03T12:00:00Z_forecastperiod_96.gif -> docs/charts/archive
