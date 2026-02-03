@@ -1,4 +1,7 @@
 # SynopticCharts
+
+**Note Feb'2026: Not currently working since the Met Office API changes in late 2025**
+
 Download Met Office sea level pressure synoptic charts twice a day and present in a table.
 
 ### [Click here for table](https://jpolton.github.io/SynopticCharts/index.html)
