@@ -1,10 +1,10 @@
-Traceback (most recent call last):
-  File "/home/runner/work/SynopticCharts/SynopticCharts/main.py", line 63, in <module>
-    tt.get_chart( hrs=hrs)
-  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 122, in get_chart
-    cls.get_metadata(hrs = hrs)
-  File "/home/runner/work/SynopticCharts/SynopticCharts/datapoint_api/datapoint_api.py", line 77, in get_metadata
-    data = xmltodict.parse(request_raw.content)['BWSurfacePressureChartList']['BWSurfacePressureChart']
-  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/xmltodict.py", line 368, in parse
-    parser.Parse(xml_input, True)
-xml.parsers.expat.ExpatError: mismatched tag: line 6, column 2
+200
+200
+200
+200
+200
+200
+200
+Failed request for forecast period 84: Forecast period not found
+File docs/charts/2026-02-12T12:00:00Z_forecastperiod_72.gif already exists
+Forecast 84 does not exist
