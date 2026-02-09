@@ -61,37 +61,81 @@ class CHART():
         #except:
         #    logging.info('Need a datapoint API Key')
 
-        try:
-            cls.key=os.environ["DATAPOINT_KEY"]
-        except KeyError:
-            logging.info('Need a datapoint API Key')
+        """
+        URL for plots:
+        Midnight analysis:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_00.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_ASXX_Assistant_FC000.gif
+
+
+        12hr Noon forecast:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_12.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_FSXX_FC012.gif
+
+        Midnight + 24hr forecast:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_24.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_FSXX_FC024.gif
+
+        Noon +36hr forecast:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_36.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_MEDIUM_RANGE_FC036.gif
+
+        Midnight +48hr forecast
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_48.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_MEDIUM_RANGE_FC048.gif
+
+        Noon +60hr forcast:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_60.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_MEDIUM_RANGE_FC060.gif
+
+        Midnight +72hr forecast:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_72.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_MEDIUM_RANGE_FC072.gif
+
+        Noon +84hr forecast:
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_84.gif
+        https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_MEDIUM_RANGE_FC084.gif
+        """
+        
+        forecast_periods = [0, 12, 24, 36, 48, 60, 72, 84]
 
         cls.hrs=hrs
         cls.ProductURI = None
 
         logging.info("retrieve chart metadata")
-        htmlcall_root = 'http://datapoint.metoffice.gov.uk/public/data/image/wxfcs/surfacepressure/xml/capabilities?'
-        url = htmlcall_root + str('key=') + str(cls.key)
+        url = 'https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw'
         try:
             request_raw = requests.get(url)
-            data = xmltodict.parse(request_raw.content)['BWSurfacePressureChartList']['BWSurfacePressureChart']
-
+            data = request_raw.json()
+            # print(request_raw.content)
         except ValueError:
-            print(f"Failed request for {cls.ofile}")
+            print(f"Failed request for {cls.ofile}")  # Note: cls.ofile might not be set yet if we fail here, but keeping existing error style
+            return
 
-        try: # find the entry for the target forecast period
-            ind = [i for i in range(len(data)) if data[i]['ForecastPeriod'] == str(cls.hrs)][0]
-            # Save metadata
-            cls.DataDate = data[ind]['DataDate']
-            cls.ValidFrom = data[ind]['ValidFrom']
-            cls.ProductURI = data[ind]['ProductURI']
-            cls.DataDateTime = data[ind]['DataDateTime']
-            cls.ForecastPeriod = data[ind]['ForecastPeriod']
+        try: 
+            # find the entry for the target forecast period
+            products = data['products']
+            target_product = None
+            search_str = f"FC{int(hrs):03d}"
+            
+            for product in products:
+                if search_str in product['uri']:
+                    target_product = product
+                    break
+            
+            if target_product:
+                cls.DataDate = target_product['data_date']
+                cls.ProductURI = target_product['uri']
+                
+                # Extract filename from URI to match the form in line 77 (e.g. 0000_FSXX_FC024.gif)
+                #filename = cls.ProductURI.split('/')[-1]
+                filename = cls.DataDate + "_forecastperiod_" + str(cls.hrs) + ".gif"
+                cls.ofile = f"docs/charts/{filename}"
+            else:
+                raise IndexError("Forecast period not found")
 
-            cls.ofile = "docs/charts/" + cls.ValidFrom + "_forecastperiod_" + cls.ForecastPeriod + ".gif"
-
-        except IndexError:
-            print(f"Failed request for forecast period {str(cls.hrs)}")
+        except (IndexError, KeyError) as e:
+            print(f"Failed request for forecast period {str(cls.hrs)}: {e}")
             pass
 
         return
@@ -125,9 +169,10 @@ class CHART():
         if (not check_file) and (cls.ProductURI is not None):
             logging.info("retrieve chart")
 
-            #htmlcall_root = 'http://datapoint.metoffice.gov.uk/public/data/image/wxfcs/surfacepressure/gif?timestep='
-            #url = htmlcall_root+str(cls.hrs) + '&key=' + str(cls.key)
-            url = cls.ProductURI.replace('{key}',str(cls.key))
+
+            #https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_FSXX_FC012.gif
+
+            url = cls.ProductURI #.replace('{key}',str(cls.key))
             try:
                 request_raw = requests.get(url)
                 print(request_raw.status_code)

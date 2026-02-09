@@ -55,8 +55,10 @@ if __name__ == '__main__':
 
     #datetime.datetime.now()
     # Load in data from the Datapoint API. Analysis is obtained by default
+    forecast_periods = [0, 12, 24, 36, 48, 60, 72, 84]
 
-    for hrs in ['0', '12', '24', '36', '48', '60', '72', '84', '96', '120']:
+
+    for hrs in forecast_periods:
         tt = CHART()
         #hrs = 12
         #tt.get_chart( hrs=hrs, ofile="charts/output"+str(hrs)+".gif")
