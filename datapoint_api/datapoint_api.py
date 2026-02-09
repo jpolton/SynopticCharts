@@ -1,8 +1,9 @@
 """
-Get Met Office synoptic charts using datapoint API
+Get Met Office synoptic charts
 Specify the forecast length in hours
 
 Created on 2023-10-31
+Updated 2026-02-09 when the API had changed
 @author: jelt
 
 Python environment:
@@ -55,18 +56,11 @@ class CHART():
     @classmethod
     def get_metadata(cls, hrs: int=0):
 
-        #try:
-        #    import config_keys # Load secret keys
-        #    cls.key=config_keys.DATAPOINT_KEY #'648a....df9b'
-        #except:
-        #    logging.info('Need a datapoint API Key')
-
         """
         URL for plots:
         Midnight analysis:
         https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_00.gif
         https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_ASXX_Assistant_FC000.gif
-
 
         12hr Noon forecast:
         https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_12.gif
@@ -109,7 +103,7 @@ class CHART():
             data = request_raw.json()
             # print(request_raw.content)
         except ValueError:
-            print(f"Failed request for {cls.ofile}")  # Note: cls.ofile might not be set yet if we fail here, but keeping existing error style
+            print(f"Failed request for {cls.hrs}")
             return
 
         try: 
