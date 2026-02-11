@@ -5,4 +5,6 @@
 200
 200
 200
-200
+Failed request for forecast period 84: Forecast period not found
+File docs/charts/2026-02-14T12:00:00Z_forecastperiod_72.gif already exists
+Forecast 84 does not exist
