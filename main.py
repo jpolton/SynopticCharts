@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     source_folder = "docs/charts"
     target_folder = "docs/charts/archive"
-    move_old_files(source_folder, target_folder, keep=100)
+    move_old_files(source_folder, target_folder, keep=50)
 
 
 
