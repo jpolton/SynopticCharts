@@ -4,14 +4,19 @@ on:
   schedule:
     - cron: '30 19 * * *' # At 19:30 everyday
     - cron: '30  7 * * *' # At 07:30 everyday
+  workflow_dispatch: # Allow manual trigger
 
-#on:
-#  issues:
-#    types: [opened, edited, deleted]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write # Allow pushing to the repo
+
     steps:
       - name: checkout repo content
         uses: actions/checkout@v4 # checkout the repository content
@@ -20,6 +25,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9' # install the python version needed
+          cache: 'pip' # caching pip dependencies
 
       - name: install python packages
         run: |
@@ -29,21 +35,27 @@ jobs:
       - name: execute py script # run main.py
         env:
           DATAPOINT_KEY: ${{ secrets.DATAPOINT_KEY }}
-        #run: python main.py
         run: |
           echo Running File...
           status=$(python main.py > log.txt 2>&1; echo $?)
           cat log.txt
           echo "status=$status" >> "$GITHUB_OUTPUT"
+        id: run
+
       - name: Commit log
+        if: steps.run.outputs.status == '0' # Only commit if script succeeded
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add -A
-          git pull
-          git checkout main
-          git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
-          git push
+          # Check if there are changes before committing
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "deploy workflow logs [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
       - name: Check run status
         if: steps.run.outputs.status != '0'
         run: exit "${{ steps.run.outputs.status }}"
