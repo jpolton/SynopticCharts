@@ -5,6 +5,12 @@ docs/charts/archive/2024-*
 docs/charts/archive/2025-*
 docs/charts/archive/2026-01*
 
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
+*~
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
