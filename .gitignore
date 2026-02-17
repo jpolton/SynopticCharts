@@ -1,9 +1,9 @@
 # keys
 datapoint_api/config_keys.py
-docs/charts/2023-*
-docs/charts/2024-*
-docs/charts/2025-*
-docs/charts/2026-01*
+docs/charts/archive/2023-*
+docs/charts/archive/2024-*
+docs/charts/archive/2025-*
+docs/charts/archive/2026-01*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
