@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Displaying Surface Pressure Charts</title>
 
     <script type="text/javascript">
 
-        function createTable()
-        {
+        function createTable() {
             let w = 4; // up to 5-day forecasts. COLUMNS
             let h = 5; // number of old forecasts to compare against. ROWS
 
@@ -16,54 +16,47 @@
             // Determine whether to start Today at 00:00 (offset=0) or 12:00 (offset=1)
             let offset = 0;
             let now_hour = today.getUTCHours();
-            if (now_hour > 19){  // Should by synchronised with cronjob
+            if (now_hour > 19) {  // Should by synchronised with cronjob
                 offset = 1;
             }
-            else{
+            else {
                 offset = 0;
             }
 
-            //let dd = String(today.getDate()).padStart(2, '0');
-            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            let yyyy = today.getFullYear();
-
-            //let datetime_str = yyyy + '-' + mm + '-' + dd;
+            // mm and yyyy are derived per-day below to handle month/year rollover correctly
 
             let table = document.createElement('table');
-            for(let j = 0; j < h; j++) { // loop over forecast issue date
+            for (let j = 0; j < h; j++) { // loop over forecast issue date
 
                 let row = table.insertRow(j);
-                for(let i = 0; i < w; i++) { // loop over 24hr day
+                for (let i = 0; i < w; i++) { // loop over 24hr day
 
-                    let dd = String(today.getDate() + i).padStart(2, '0');
-
-                    for(let k = 0; k < 2; k++) { // loop over 12hr cycle
+                    for (let k = 0; k < 2; k++) { // loop over 12hr cycle
                         let hh = String(((k + offset) % 2) * 12).padStart(2, '0');
-                        // update day number if 12hr cycle starts at 12:00
-                        if ((k + offset) * 12 < 24) {
-                            dd = String(today.getDate() + i ).padStart(2, '0');
-                        }
-                        else {
-                            dd = String(today.getDate() + i + 1).padStart(2, '0');
-                        }
+                        // Compute the target date properly so month/year roll over correctly
+                        let dayOffset = i + ((k + offset) >= 2 ? 1 : 0);
+                        let targetDate = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + dayOffset));
+                        let dd = String(targetDate.getUTCDate()).padStart(2, '0');
+                        let mm = String(targetDate.getUTCMonth() + 1).padStart(2, '0');
+                        let yyyy = String(targetDate.getUTCFullYear());
                         let datetime_str = yyyy + '-' + mm + '-' + dd + "T" + hh + ":00:00Z";
 
                         let img = document.createElement("img");
-                        img.src = folderPath + datetime_str + "_forecastperiod_" + (j + 2*i + k) * 12 + ".gif";
+                        img.src = folderPath + datetime_str + "_forecastperiod_" + (j + 2 * i + k) * 12 + ".gif";
                         img.height = 150;
-                        let td = row.insertCell(2*i + k);
+                        let td = row.insertCell(2 * i + k);
 
                         if (1) {    // Add image to cell
                             td.appendChild(img);
                         }
                         else {    // Add text to the cell - debugging filenames
-                            let newText = document.createTextNode(datetime_str + "_forecastperiod_" + (j + 2*i + k) * 12 + ".gif");
+                            let newText = document.createTextNode(datetime_str + "_forecastperiod_" + (j + 2 * i + k) * 12 + ".gif");
                             td.appendChild(newText);
                         }
                     }
                 }
             }
-            
+
             // Add link to repo
             let newRow = table.insertRow(-1); // Insert a row at the end of the table
             let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
@@ -76,7 +69,7 @@
             a.title = "link to repo";
             a.href = "https://github.com/jpolton/SynopticCharts";
             newCell.appendChild(a);
-            
+
             document.body.appendChild(table);
 
         }
@@ -85,8 +78,8 @@
 
     </script>
 </head>
-    
+
 <body>
 </body>
-</html>
 
+</html>
