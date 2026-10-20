@@ -26,9 +26,10 @@
             // mm and yyyy are derived per-day below to handle month/year rollover correctly
 
             let table = document.createElement('table');
+            let headerRow = table.insertRow(0);
             for (let j = 0; j < h; j++) { // loop over forecast issue date
 
-                let row = table.insertRow(j);
+                let row = table.insertRow(-1);
                 for (let i = 0; i < w; i++) { // loop over 24hr day
 
                     for (let k = 0; k < 2; k++) { // loop over 12hr cycle
@@ -40,17 +41,33 @@
                         let mm = String(targetDate.getUTCMonth() + 1).padStart(2, '0');
                         let yyyy = String(targetDate.getUTCFullYear());
                         let datetime_str = yyyy + '-' + mm + '-' + dd + "T" + hh + ":00:00Z";
+                        let filename = datetime_str + "_forecastperiod_" + (j + 2 * i + k) * 12 + ".gif";
 
                         let img = document.createElement("img");
-                        img.src = folderPath + datetime_str + "_forecastperiod_" + (j + 2 * i + k) * 12 + ".gif";
+                        img.src = folderPath + filename;
                         img.height = 150;
                         let td = row.insertCell(2 * i + k);
+                        img.addEventListener("error", () => img.remove(), { once: true });
+
+                        if (j === 0) {
+                            let imageDate = new Date(filename.split("_")[0]);
+                            let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                            let th = document.createElement("th");
+                            th.scope = "col";
+                            th.textContent = weekdays[imageDate.getUTCDay()] + " " +
+                                String(imageDate.getUTCDate()).padStart(2, "0") + " " +
+                                months[imageDate.getUTCMonth()] + " " +
+                                String(imageDate.getUTCHours()).padStart(2, "0") + ":" +
+                                String(imageDate.getUTCMinutes()).padStart(2, "0") + "Z";
+                            headerRow.appendChild(th);
+                        }
 
                         if (1) {    // Add image to cell
                             td.appendChild(img);
                         }
                         else {    // Add text to the cell - debugging filenames
-                            let newText = document.createTextNode(datetime_str + "_forecastperiod_" + (j + 2 * i + k) * 12 + ".gif");
+                            let newText = document.createTextNode(filename);
                             td.appendChild(newText);
                         }
                     }
@@ -60,6 +77,7 @@
             // Add link to repo
             let newRow = table.insertRow(-1); // Insert a row at the end of the table
             let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
+            newCell.colSpan = 2 * w;
 
             // Create anchor element. 
             let a = document.createElement('a');
