@@ -1,8 +1,24 @@
-File docs/charts/2026-10-22T00:00:00Z_forecastperiod_0.gif already exists
-File docs/charts/2026-10-22T12:00:00Z_forecastperiod_12.gif already exists
-File docs/charts/2026-10-23T00:00:00Z_forecastperiod_24.gif already exists
-File docs/charts/2026-10-23T12:00:00Z_forecastperiod_36.gif already exists
-File docs/charts/2026-10-24T00:00:00Z_forecastperiod_48.gif already exists
-File docs/charts/2026-10-24T12:00:00Z_forecastperiod_60.gif already exists
-File docs/charts/2026-10-25T00:00:00Z_forecastperiod_72.gif already exists
-File docs/charts/2026-10-25T12:00:00Z_forecastperiod_84.gif already exists
+200
+Success: written docs/charts/2026-10-22T12:00:00Z_forecastperiod_0.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_ASXX_Assistant_FC000.gif
+200
+Success: written docs/charts/2026-10-23T00:00:00Z_forecastperiod_12.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_FSXX_FC012.gif
+200
+Success: written docs/charts/2026-10-23T12:00:00Z_forecastperiod_24.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_FSXX_FC024.gif
+200
+Success: written docs/charts/2026-10-24T00:00:00Z_forecastperiod_36.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_MEDIUM_RANGE_FC036.gif
+200
+Success: written docs/charts/2026-10-24T12:00:00Z_forecastperiod_48.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_MEDIUM_RANGE_FC048.gif
+200
+Success: written docs/charts/2026-10-25T00:00:00Z_forecastperiod_60.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_MEDIUM_RANGE_FC060.gif
+200
+Success: written docs/charts/2026-10-25T12:00:00Z_forecastperiod_72.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T1200/1200_MEDIUM_RANGE_FC072.gif
+Failed request for forecast period 84: Forecast period, 084hrs, not found
+File docs/charts/2026-10-25T12:00:00Z_forecastperiod_72.gif already exists
+Forecast 84 does not exist since None is None
+Moved: docs/charts/2026-10-21T00:00:00Z_forecastperiod_48.gif -> docs/charts/archive
+Moved: docs/charts/2026-10-21T00:00:00Z_forecastperiod_36.gif -> docs/charts/archive
+Moved: docs/charts/2026-10-21T00:00:00Z_forecastperiod_24.gif -> docs/charts/archive
+Moved: docs/charts/2026-10-21T00:00:00Z_forecastperiod_12.gif -> docs/charts/archive
+Moved: docs/charts/2026-10-21T00:00:00Z_forecastperiod_0.gif -> docs/charts/archive
+Moved: docs/charts/2026-10-20T12:00:00Z_forecastperiod_84.gif -> docs/charts/archive
+Moved: docs/charts/2026-10-20T12:00:00Z_forecastperiod_72.gif -> docs/charts/archive
