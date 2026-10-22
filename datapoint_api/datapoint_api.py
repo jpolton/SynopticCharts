@@ -89,6 +89,21 @@ class CHART():
         Noon +84hr forecast:
         https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/colour/2026-02-09T0000/FSXX00T_84.gif
         https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_MEDIUM_RANGE_FC084.gif
+        
+        ---
+        The following url, from below: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw
+        Returns:
+        {"issued": "2026-10-22T07:30:28Z",
+          "products": [{"data_date": "2026-10-22T00:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_ASXX_Assistant_FC000.gif"}, {"data_date": "2026-10-25T12:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC084.gif"}, {"data_date": "2026-10-25T00:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC072.gif"}, {"data_date": "2026-10-24T00:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC048.gif"}, {"data_date": "2026-10-24T12:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC060.gif"}, {"data_date": "2026-10-23T12:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC036.gif"}, {"data_date": "2026-10-22T12:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_FSXX_FC012.gif"}, {"data_date": "2026-10-23T00:00:00Z", 
+            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_FSXX_FC024.gif"}
+            ]}
         """
         
         forecast_periods = [0, 12, 24, 36, 48, 60, 72, 84]
@@ -126,7 +141,7 @@ class CHART():
                 filename = cls.DataDate + "_forecastperiod_" + str(cls.hrs) + ".gif"
                 cls.ofile = f"docs/charts/{filename}"
             else:
-                raise IndexError("Forecast period not found")
+                raise IndexError(f'Forecast period, {int(hrs):03d}hrs, not found')
 
         except (IndexError, KeyError) as e:
             print(f"Failed request for forecast period {str(cls.hrs)}: {e}")
@@ -161,7 +176,7 @@ class CHART():
 
         check_file = os.path.isfile(cls.ofile)
         if (not check_file) and (cls.ProductURI is not None):
-            logging.info("retrieve chart")
+            logging.info(f'retrieve chart: {cls.ProductURI}')
 
 
             #https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_FSXX_FC012.gif
@@ -172,14 +187,15 @@ class CHART():
                 print(request_raw.status_code)
                 with open(cls.ofile, 'wb') as out:
                     out.write(request_raw.content)
+                print(f"Success: written {cls.ofile} from {url}")
 
             except ValueError:
-                print(f"Failed request for {cls.ofile}")
+                print(f"Failed request for {cls.ofile} from {url}")
         else:
             if(check_file):
                 print(f"File {cls.ofile} already exists")
             if(cls.ProductURI is None):
-                print(f"Forecast {cls.hrs} does not exist")
+                print(f"Forecast {cls.hrs} does not exist since {cls.ProductURI} is None")
 
         return
 
