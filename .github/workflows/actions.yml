@@ -21,6 +21,19 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v5 # checkout the repository content
 
+      - name: Show scheduler time
+        run: |
+          echo "===== WORKFLOW TIMING ====="
+          echo "UTC:"
+          date -u "+%Y-%m-%d %H:%M:%S UTC"
+          echo
+          echo "Runner local time:"
+          date "+%Y-%m-%d %H:%M:%S %Z"
+          echo
+          echo "Workflow: $GITHUB_WORKFLOW"
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Ref: $GITHUB_REF"
+
       - name: setup python
         uses: actions/setup-python@v5
         with:
