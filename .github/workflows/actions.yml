@@ -2,8 +2,8 @@ name: run main.py
 
 on:
   schedule:
-    - cron: '30 20 * * *' # At 19:30 GMT everyday
-    - cron: '30 08 * * *' # At 07:30 GMT everyday
+    - cron: '30 19 * * *' # At 19:30 GMT (or 20:30 BST) everyday
+    - cron: '30 07 * * *' # At 07:30 GMT (or 08:30 BST) everyday
   workflow_dispatch: # Allow manual trigger
 
 concurrency:
