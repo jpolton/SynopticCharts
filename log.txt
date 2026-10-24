@@ -1,24 +1,16 @@
-200
-Success: written docs/charts/2026-10-24T00:00:00Z_forecastperiod_0.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_ASXX_Assistant_FC000.gif
-200
-Success: written docs/charts/2026-10-24T12:00:00Z_forecastperiod_12.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_FSXX_FC012.gif
-200
-Success: written docs/charts/2026-10-25T00:00:00Z_forecastperiod_24.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_FSXX_FC024.gif
-200
-Success: written docs/charts/2026-10-25T12:00:00Z_forecastperiod_36.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_MEDIUM_RANGE_FC036.gif
-200
-Success: written docs/charts/2026-10-26T00:00:00Z_forecastperiod_48.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_MEDIUM_RANGE_FC048.gif
-200
-Success: written docs/charts/2026-10-26T12:00:00Z_forecastperiod_60.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_MEDIUM_RANGE_FC060.gif
-200
-Success: written docs/charts/2026-10-27T00:00:00Z_forecastperiod_72.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_MEDIUM_RANGE_FC072.gif
-200
-Success: written docs/charts/2026-10-27T12:00:00Z_forecastperiod_84.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-24T0000/0000_MEDIUM_RANGE_FC084.gif
-Moved: docs/charts/2026-10-22T12:00:00Z_forecastperiod_60.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T12:00:00Z_forecastperiod_48.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T12:00:00Z_forecastperiod_36.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T12:00:00Z_forecastperiod_24.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T12:00:00Z_forecastperiod_12.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T00:00:00Z_forecastperiod_72.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T12:00:00Z_forecastperiod_0.gif -> docs/charts/archive
-Moved: docs/charts/2026-10-22T00:00:00Z_forecastperiod_60.gif -> docs/charts/archive
+2026-10-24 10:30:34,732 INFO retrieve chart metadata
+2026-10-24 10:30:35,248 INFO File docs/charts/2026-10-24T00:00:00Z_forecastperiod_0.gif already exists
+2026-10-24 10:30:35,248 INFO retrieve chart metadata
+2026-10-24 10:30:35,369 INFO File docs/charts/2026-10-24T12:00:00Z_forecastperiod_12.gif already exists
+2026-10-24 10:30:35,369 INFO retrieve chart metadata
+2026-10-24 10:30:35,494 INFO File docs/charts/2026-10-25T00:00:00Z_forecastperiod_24.gif already exists
+2026-10-24 10:30:35,494 INFO retrieve chart metadata
+2026-10-24 10:30:35,552 INFO File docs/charts/2026-10-25T12:00:00Z_forecastperiod_36.gif already exists
+2026-10-24 10:30:35,552 INFO retrieve chart metadata
+2026-10-24 10:30:35,668 INFO File docs/charts/2026-10-26T00:00:00Z_forecastperiod_48.gif already exists
+2026-10-24 10:30:35,669 INFO retrieve chart metadata
+2026-10-24 10:30:36,002 INFO File docs/charts/2026-10-26T12:00:00Z_forecastperiod_60.gif already exists
+2026-10-24 10:30:36,002 INFO retrieve chart metadata
+2026-10-24 10:30:36,110 INFO File docs/charts/2026-10-27T00:00:00Z_forecastperiod_72.gif already exists
+2026-10-24 10:30:36,110 INFO retrieve chart metadata
+2026-10-24 10:30:36,239 INFO File docs/charts/2026-10-27T12:00:00Z_forecastperiod_84.gif already exists
