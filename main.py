@@ -48,7 +48,7 @@ def move_old_files(source_folder, target_folder, keep=100):
     # Move the files
     for file_path in files_to_move:
         shutil.move(file_path, target_folder)
-        print(f"Moved: {file_path} -> {target_folder}")
+        logger.info(f"Moved: {file_path} -> {target_folder}")
 
 
 if __name__ == '__main__':

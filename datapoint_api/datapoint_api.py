@@ -34,8 +34,31 @@ import xml.etree.ElementTree as ET
 import xml
 
 import logging
-logging.basicConfig(filename='datapoint.log', filemode='w+')
-logging.getLogger().setLevel(logging.INFO)
+
+import os
+import logging
+
+LOG_FILE = os.environ.get("SYNOPTIC_LOG", "log.txt")
+
+log_dir = os.path.dirname(LOG_FILE)
+if log_dir:
+    os.makedirs(log_dir, exist_ok=True)
+
+# Remove stale duplicate log if it exists
+if os.path.exists("datapoint.log"):
+    os.remove("datapoint.log")
+
+logging.basicConfig(
+    filename=LOG_FILE,
+    filemode="w",
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+    force=True,
+)
+logger = logging.getLogger(__name__)
+
+#logging.basicConfig(filename='datapoint.log', filemode='w+')
+#logging.getLogger().setLevel(logging.INFO)
 
 #%% ########## FUNCTIONS ###########################################################
 
@@ -111,14 +134,14 @@ class CHART():
         cls.hrs=hrs
         cls.ProductURI = None
 
-        logging.info("retrieve chart metadata")
+        logger.info("retrieve chart metadata")
         url = 'https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw'
         try:
             request_raw = requests.get(url)
             data = request_raw.json()
-            # print(request_raw.content)
+            # logger.info(request_raw.content)
         except ValueError:
-            print(f"Failed request for {cls.hrs}")
+            logger.error(f"Failed request for {cls.hrs}")
             return
 
         try: 
@@ -144,7 +167,7 @@ class CHART():
                 raise IndexError(f'Forecast period, {int(hrs):03d}hrs, not found')
 
         except (IndexError, KeyError) as e:
-            print(f"Failed request for forecast period {str(cls.hrs)}: {e}")
+            logger.error(f"Failed request for forecast period {str(cls.hrs)}: {e}")
             pass
 
         return
@@ -176,7 +199,7 @@ class CHART():
 
         check_file = os.path.isfile(cls.ofile)
         if (not check_file) and (cls.ProductURI is not None):
-            logging.info(f'retrieve chart: {cls.ProductURI}')
+            logger.info(f'retrieve chart: {cls.ProductURI}')
 
 
             #https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-02-09T0000/0000_FSXX_FC012.gif
@@ -184,18 +207,18 @@ class CHART():
             url = cls.ProductURI #.replace('{key}',str(cls.key))
             try:
                 request_raw = requests.get(url)
-                print(request_raw.status_code)
+                logger.info(request_raw.status_code)
                 with open(cls.ofile, 'wb') as out:
                     out.write(request_raw.content)
-                print(f"Success: written {cls.ofile} from {url}")
+                logger.info(f"Success: written {cls.ofile} from {url}")
 
             except ValueError:
-                print(f"Failed request for {cls.ofile} from {url}")
+                logger.error(f"Failed request for {cls.ofile} from {url}")
         else:
             if(check_file):
-                print(f"File {cls.ofile} already exists")
+                logger.info(f"File {cls.ofile} already exists")
             if(cls.ProductURI is None):
-                print(f"Forecast {cls.hrs} does not exist since {cls.ProductURI} is None")
+                logger.info(f"Forecast {cls.hrs} does not exist since {cls.ProductURI} is None")
 
         return
 

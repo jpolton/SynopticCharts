@@ -50,7 +50,7 @@ jobs:
           DATAPOINT_KEY: ${{ secrets.DATAPOINT_KEY }}
         run: |
           echo Running File...
-          status=$(python main.py > log.txt 2>&1; echo $?)
+          status=$(python main.py; echo $?)
           cat log.txt
           echo "status=$status" >> "$GITHUB_OUTPUT"
         id: run
