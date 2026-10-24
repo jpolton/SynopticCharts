@@ -85,15 +85,15 @@
                 .catch(error => console.error(error));
 
             // Add Issue date
-            let newRow = table.insertRow(-1); // Insert a row at the end of the table
-            let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
-            newCell.colSpan = 2 * w;
+            let newRow2 = table.insertRow(-1); // Insert a row at the end of the table
+            let newCell2 = newRow2.insertCell(0); // Insert a cell in the row at index 0
+            newCell2.colSpan = 2 * w;
 
             // Create anchor element. 
-            let a = document.createElement('a');
+            let a2 = document.createElement('a');
             // Append a text node to the cell
             let issue_txt = document.createTextNode("Issue date: " + myText);
-            a.appendChild(issue_txt);
+            a2.appendChild(issue_txt);
  
             document.body.appendChild(table);
 
