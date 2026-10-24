@@ -94,15 +94,15 @@ class CHART():
         The following url, from below: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw
         Returns:
         {"issued": "2026-10-22T07:30:28Z",
-          "products": [{"data_date": "2026-10-22T00:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_ASXX_Assistant_FC000.gif"}, {"data_date": "2026-10-25T12:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC084.gif"}, {"data_date": "2026-10-25T00:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC072.gif"}, {"data_date": "2026-10-24T00:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC048.gif"}, {"data_date": "2026-10-24T12:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC060.gif"}, {"data_date": "2026-10-23T12:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC036.gif"}, {"data_date": "2026-10-22T12:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_FSXX_FC012.gif"}, {"data_date": "2026-10-23T00:00:00Z", 
-            "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_FSXX_FC024.gif"}
+          "products": [
+            {"data_date": "2026-10-22T00:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_ASXX_Assistant_FC000.gif"},
+            {"data_date": "2026-10-25T12:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC084.gif"},
+            {"data_date": "2026-10-25T00:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC072.gif"},
+            {"data_date": "2026-10-24T00:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC048.gif"},
+            {"data_date": "2026-10-24T12:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC060.gif"},
+            {"data_date": "2026-10-23T12:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_MEDIUM_RANGE_FC036.gif"},
+            {"data_date": "2026-10-22T12:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_FSXX_FC012.gif"},
+            {"data_date": "2026-10-23T00:00:00Z", "uri": "https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-10-22T0000/0000_FSXX_FC024.gif"}
             ]}
         """
         
