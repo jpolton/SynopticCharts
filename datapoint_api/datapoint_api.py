@@ -141,10 +141,13 @@ class CHART():
             data = request_raw.json()
             # logger.info(request_raw.content)
         except ValueError:
-            logger.error(f"Failed request for {cls.hrs}")
+            logger.error(f"Failed request for {url}")
             return
 
         try: 
+            # store the issue timestamp
+            cls.Issued_timestamp = data['issued']
+
             # find the entry for the target forecast period
             products = data['products']
             target_product = None
@@ -211,6 +214,9 @@ class CHART():
                 with open(cls.ofile, 'wb') as out:
                     out.write(request_raw.content)
                 logger.info(f"Success: written {cls.ofile} from {url}")
+                # Write Issue timestamp to a file
+                with open("issue_timestamp.txt", 'wb') as out:
+                    out.write(cls.Issued_timestamp)
 
             except ValueError:
                 logger.error(f"Failed request for {cls.ofile} from {url}")
