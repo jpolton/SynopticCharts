@@ -214,7 +214,7 @@ class CHART():
                 with open(cls.ofile, 'wb') as out:
                     out.write(request_raw.content)
                 logger.info(f"Success: written {cls.ofile} from {url}")
-                # Write Issue timestamp to a file
+                # Write Issue timestamp to a file, if a new file has been obtained
                 with open("issue_timestamp.txt", 'wb') as out:
                     out.write(cls.Issued_timestamp)
 
