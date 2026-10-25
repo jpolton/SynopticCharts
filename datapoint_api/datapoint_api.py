@@ -215,7 +215,7 @@ class CHART():
                     out.write(request_raw.content)
                 logger.info(f"Success: written {cls.ofile} from {url}")
                 # Write Issue timestamp to a file, if a new file has been obtained
-                with open("issue_timestamp.txt", 'w', encoding="utf-8") as out:
+                with open("docs/issue_timestamp.txt", 'w', encoding="utf-8") as out:
                     out.write(cls.Issued_timestamp)
 
             except ValueError:
