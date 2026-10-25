@@ -6,7 +6,7 @@
 
     <script type="text/javascript">
 
-        function createTable() {
+        async function createTable() {
             let w = 4; // up to 5-day forecasts. COLUMNS
             let h = 5; // number of old forecasts to compare against. ROWS
 
@@ -74,26 +74,20 @@
                 }
             }
 
-            let myText;
-            fetch("issue_timestamp.txt")
-                .then(response => response.text())
-                .then(text => {
-                    myText = text;
-                    console.log(myText);
-                    // Use myText here (though I try and use it in the following...)
-                })
-                .catch(error => console.error(error));
-
-            // Add Issue date
-            let newRow2 = table.insertRow(-1); // Insert a row at the end of the table
-            let newCell2 = newRow2.insertCell(0); // Insert a cell in the row at index 0
+            let issueText = "unknown";
+        
+            try {
+                const response = await fetch("issue_timestamp.txt");
+                if (!response.ok) throw new Error("issue_timestamp.txt not found");
+                issueText = await response.text();
+            } catch (err) {
+                console.error("Could not load issue timestamp:", err);
+            }
+        
+            let newRow2 = table.insertRow(-1);
+            let newCell2 = newRow2.insertCell(0);
             newCell2.colSpan = 2 * w;
-
-            // Create anchor element. 
-            let a2 = document.createElement('a');
-            // Append a text node to the cell
-            let issue_txt = document.createTextNode("Issue date: " + myText);
-            a2.appendChild(issue_txt);
+            newCell2.textContent = "Issue date: " + issueText.trim();
  
             document.body.appendChild(table);
 
