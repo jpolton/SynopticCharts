@@ -23,13 +23,31 @@ Example usage:
 """
 
 import sys, os
-sys.path.append(os.path.dirname(os.path.abspath("datapoint_api/datapoint_api.py")))
+import logging
 import datetime
 import shutil
+
+sys.path.append(os.path.dirname(os.path.abspath("datapoint_api/datapoint_api.py")))
+
 try:
     from datapoint_api import CHART
 except:
     from datapoint_api.datapoint_api import CHART
+
+# Set up logging, consistent with datapoint_api/datapoint_api.py
+LOG_FILE = os.environ.get("SYNOPTIC_LOG", "log.txt")
+log_dir = os.path.dirname(LOG_FILE)
+if log_dir:
+    os.makedirs(log_dir, exist_ok=True)
+
+logging.basicConfig(
+    filename=LOG_FILE,
+    filemode="w",
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s",
+    force=True,
+)
+logger = logging.getLogger("synoptic")
 
 def move_old_files(source_folder, target_folder, keep=100):
     # Ensure the target folder exists
