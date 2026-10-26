@@ -28,14 +28,12 @@ To do:
 """
 
 import os
+import re
 import requests
 import xmltodict
 import xml.etree.ElementTree as ET
 import xml
 
-import logging
-
-import os
 import logging
 
 LOG_FILE = os.environ.get("SYNOPTIC_LOG", "log.txt")
@@ -216,7 +214,8 @@ class CHART():
                 logger.info(f"Success: written {cls.ofile} from {url}")
                 # Write Issue timestamp to a file, if a new file has been obtained
                 with open("docs/issue_timestamp.txt", 'a', encoding="utf-8") as out:
-                    out.write(cls.Issued_timestamp + '\n')
+                    timestamp = re.search(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)', cls.ofile).group(1)
+                    out.write(cls.Issued_timestamp + ' : ' + timestamp + ' + ' + str(cls.hrs) + 'hrs' '\n')
 
             except ValueError:
                 logger.error(f"Failed request for {cls.ofile} from {url}")
