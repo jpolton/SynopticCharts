@@ -30,6 +30,8 @@
             for (let j = 0; j < h; j++) { // loop over forecast issue date
 
                 let row = table.insertRow(-1);
+                let labelCell = row.insertCell(0);
+                labelCell.textContent = String(j);  // Insert row labels
                 for (let i = 0; i < w; i++) { // loop over 24hr day
 
                     for (let k = 0; k < 2; k++) { // loop over 12hr cycle
@@ -46,10 +48,18 @@
                         let img = document.createElement("img");
                         img.src = folderPath + filename;
                         img.height = 150;
-                        let td = row.insertCell(2 * i + k);
+                        let td = row.insertCell(2 * i + k + 1);
                         img.addEventListener("error", () => img.remove(), { once: true });
 
+                        // Insert column headers (dates)
                         if (j === 0) {
+                            // Insert a blank header cell for the row label column (first column)
+                            if (i === 0 && k === 0) {
+                                const emptyTh = document.createElement("th");
+                                emptyTh.scope = "col";
+                                headerRow.appendChild(emptyTh);
+                            }
+
                             let imageDate = new Date(filename.split("_")[0]);
                             let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
                             let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -75,7 +85,7 @@
             }
 
             let issueText = "unknown";
-        
+
             try {
                 const response = await fetch("issue_timestamp.txt");
                 if (!response.ok) throw new Error("issue_timestamp.txt not found");
@@ -83,12 +93,12 @@
             } catch (err) {
                 console.error("Could not load issue timestamp:", err);
             }
-        
+
             let newRow2 = table.insertRow(-1);
             let newCell2 = newRow2.insertCell(0);
             newCell2.colSpan = 2 * w;
             newCell2.textContent = "Issue date: " + issueText.trim();
- 
+
             document.body.appendChild(table);
 
 
