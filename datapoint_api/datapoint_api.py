@@ -127,7 +127,7 @@ class CHART():
             ]}
         """
         
-        forecast_periods = [0, 12, 24, 36, 48, 60, 72, 84]
+        forecast_periods = [0, 12, 24, 36, 48, 60, 72, 84, 96, 120]
 
         cls.hrs=hrs
         cls.ProductURI = None
