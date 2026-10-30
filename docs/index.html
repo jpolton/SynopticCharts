@@ -4,124 +4,111 @@
 <head>
     <title>Displaying Surface Pressure Charts</title>
 
-    <script type="text/javascript">
-
+    <script>
         async function createTable() {
-            let w = 6; // up to 5-day forecasts. COLUMNS
-            let h = 6; // number of old forecasts to compare against. ROWS
-
-            let folderPath = "charts/";
-            let today = new Date();
-
-            // Determine whether to start Today at 00:00 (offset=0) or 12:00 (offset=1)
-            let offset = 0;
-            let now_hour = today.getUTCHours();
-            if (now_hour > 19) {  // Should by synchronised with cronjob
-                offset = 1;
-            }
-            else {
-                offset = 0;
-            }
-
-            // mm and yyyy are derived per-day below to handle month/year rollover correctly
-
-            let table = document.createElement('table');
-            let headerRow = table.insertRow(0);
-            for (let j = 0; j < h; j++) { // loop over forecast issue date
-
-                let row = table.insertRow(-1);
-                let labelCell = row.insertCell(0);
-                labelCell.textContent = String(j);  // Insert row labels
-                for (let i = 0; i < w; i++) { // loop over 24hr day
-
-                    for (let k = 0; k < 2; k++) { // loop over 12hr cycle
-                        let hh = String(((k + offset) % 2) * 12).padStart(2, '0');
-                        // Compute the target date properly so month/year roll over correctly
-                        let dayOffset = i + ((k + offset) >= 2 ? 1 : 0);
-                        let targetDate = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + dayOffset));
-                        let dd = String(targetDate.getUTCDate()).padStart(2, '0');
-                        let mm = String(targetDate.getUTCMonth() + 1).padStart(2, '0');
-                        let yyyy = String(targetDate.getUTCFullYear());
-                        let datetime_str = yyyy + '-' + mm + '-' + dd + "T" + hh + ":00:00Z";
-                        let filename = datetime_str + "_forecastperiod_" + (j + 2 * i + k) * 12 + ".gif";
-
-                        let img = document.createElement("img");
-                        img.src = folderPath + filename;
-                        img.height = 150;
-                        let td = row.insertCell(2 * i + k + 1);
-                        img.addEventListener("error", () => img.remove(), { once: true });
-
-                        // Insert column headers (dates)
-                        if (j === 0) {
-                            // Insert a blank header cell for the row label column (first column)
-                            if (i === 0 && k === 0) {
-                                const emptyTh = document.createElement("th");
-                                emptyTh.scope = "col";
-                                headerRow.appendChild(emptyTh);
-                            }
-
-                            let imageDate = new Date(filename.split("_")[0]);
-                            let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                            let th = document.createElement("th");
-                            th.scope = "col";
-                            th.textContent = weekdays[imageDate.getUTCDay()] + " " +
-                                String(imageDate.getUTCDate()).padStart(2, "0") + " " +
-                                months[imageDate.getUTCMonth()] + " " +
-                                String(imageDate.getUTCHours()).padStart(2, "0") + ":" +
-                                String(imageDate.getUTCMinutes()).padStart(2, "0") + "Z";
-                            headerRow.appendChild(th);
-                        }
-
-                        if (1) {    // Add image to cell
-                            td.appendChild(img);
-                        }
-                        else {    // Add text to the cell - debugging filenames
-                            let newText = document.createTextNode(filename);
-                            td.appendChild(newText);
-                        }
-                    }
-                }
-            }
-
-            let issueText = "unknown";
+            const columnsPerDay = 2;
+            const days = 6;
+            const folderPath = "charts/";
 
             try {
-                const response = await fetch("issue_timestamp.txt");
-                if (!response.ok) throw new Error("issue_timestamp.txt not found");
-                issueText = await response.text();
-            } catch (err) {
-                console.error("Could not load issue timestamp:", err);
+                // Load and validate the issue runs and their available forecast products.
+                const response = await fetch("forecast_metadata.json");
+                if (!response.ok) {
+                    throw new Error(`Could not load forecast metadata (${response.status})`);
+                }
+
+                const forecasts = await response.json();
+                if (!Array.isArray(forecasts) || forecasts.some(forecast =>
+                    typeof forecast.issued !== "string" ||
+                    !Number.isFinite(Date.parse(forecast.issued)) ||
+                    !Array.isArray(forecast.products) ||
+                    forecast.products.some(product =>
+                        typeof product.target_date !== "string" ||
+                        typeof product.forecast_lead !== "number"
+                    )
+                )) {
+                    throw new Error("Forecast metadata has an invalid format");
+                }
+
+                // Put the newest issue first so the most recent run appears at the top.
+                forecasts.sort((a, b) => Date.parse(b.issued) - Date.parse(a.issued));
+
+                // Build six 12-hour target-time columns per day, starting with the next
+                // scheduled cycle when today's late forecast has already been issued.
+                const now = new Date();
+                const offset = now.getUTCHours() > 19 ? 1 : 0;
+                const columnDates = Array.from({ length: columnsPerDay * days }, (_, index) => {
+                    const cycle = index + offset;
+                    return new Date(Date.UTC(
+                        now.getUTCFullYear(),
+                        now.getUTCMonth(),
+                        now.getUTCDate() + Math.floor(cycle / columnsPerDay),
+                        (cycle % columnsPerDay) * 12
+                    ));
+                });
+
+                // Add target-time headers, then one row per issue run.
+                const table = document.createElement("table");
+                const headerRow = table.createTHead().insertRow();
+                const emptyHeader = document.createElement("th");
+                emptyHeader.scope = "col";
+                headerRow.appendChild(emptyHeader);
+
+                const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                for (const date of columnDates) {
+                    const header = document.createElement("th");
+                    header.scope = "col";
+                    header.textContent = `${weekdays[date.getUTCDay()]} ${String(date.getUTCDate()).padStart(2, "0")} ${months[date.getUTCMonth()]} ${String(date.getUTCHours()).padStart(2, "0")}:00Z`;
+                    headerRow.appendChild(header);
+                }
+
+                const tableBody = table.createTBody();
+                for (const forecast of forecasts.slice(0, days)) {
+                    const row = tableBody.insertRow();
+                    const issueCell = document.createElement("th");
+                    issueCell.scope = "row";
+                    issueCell.textContent = forecast.issued;
+                    row.appendChild(issueCell);
+
+                    // Match each target-time column to its product; missing products leave
+                    // an empty cell, while available ones determine their own image filename.
+                    const productsByTargetDate = new Map(
+                        forecast.products.map(product => [product.target_date, product])
+                    );
+                    for (const date of columnDates) {
+                        const cell = row.insertCell();
+                        const targetDate = date.toISOString().replace(".000Z", "Z");
+                        const product = productsByTargetDate.get(targetDate);
+                        if (!product) {
+                            continue;
+                        }
+
+                        const image = document.createElement("img");
+                        image.src = `${folderPath}${product.target_date}_forecastperiod_${product.forecast_lead}.gif`;
+                        image.height = 150;
+                        image.addEventListener("error", () => image.remove(), { once: true });
+                        cell.appendChild(image);
+                    }
+                }
+
+                // Add a repository link below the forecast grid.
+                const footerRow = table.createTFoot().insertRow();
+                const footerCell = footerRow.insertCell();
+                footerCell.colSpan = columnsPerDay * days + 1;
+                const link = document.createElement("a");
+                link.href = "https://github.com/jpolton/SynopticCharts";
+                link.textContent = "Return to code repo: github.com/jpolton/SynopticCharts";
+                footerCell.appendChild(link);
+                document.body.appendChild(table);
+            } catch (error) {
+                // Report loading or data errors instead of showing an incomplete grid.
+                console.error("Could not display forecast charts:", error);
+                document.body.textContent = `Could not load forecast charts: ${error.message}`;
             }
-
-            let newRow2 = table.insertRow(-1);
-            let newCell2 = newRow2.insertCell(0);
-            newCell2.colSpan = 2 * w;
-            newCell2.textContent = "Issue date: " + issueText.trim();
-
-            document.body.appendChild(table);
-
-
-            // Add link to repo
-            let newRow = table.insertRow(-1); // Insert a row at the end of the table
-            let newCell = newRow.insertCell(0); // Insert a cell in the row at index 0
-            newCell.colSpan = 2 * w;
-
-            // Create anchor element. 
-            let a = document.createElement('a');
-            // Append a text node to the cell
-            let link = document.createTextNode("Return to code repo: github.com/jpolton/SynopticCharts");
-            a.appendChild(link);
-            a.title = "link to repo";
-            a.href = "https://github.com/jpolton/SynopticCharts";
-            newCell.appendChild(a);
-
-            document.body.appendChild(table);
-
         }
 
-        window.onload = createTable;
-
+        window.addEventListener("load", createTable);
     </script>
 </head>
 

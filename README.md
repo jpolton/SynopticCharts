@@ -8,9 +8,10 @@ The table has the time for which the forecast is made increaing to the right and
 
 <img width="706" alt="synoptic_chart_layout" src="https://github.com/jpolton/SynopticCharts/assets/22616872/9c46d8dd-b5b5-4dad-bfb6-4fec7ce11bb6">
 
-There is a two step process:
+There are three steps:
 1) fetch the charts twice a day. This is done with a GitAction. The charts are stored in `docs/charts/`
-2) Render the charts in a table using javascript: `docs/index.html`
+2) Save the issue time and target date for each available chart in `docs/forecast_metadata.json`
+3) Render the charts in a table using javascript: `docs/index.html`; rows are ordered by issue time, newest first.
 
 ## Run jobs locally
 Instead of running GitActions to obtain the charts, a cronjob could be run locally. A cronjob script might look like:
