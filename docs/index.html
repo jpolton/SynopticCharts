@@ -92,14 +92,33 @@
                     }
                 }
 
-                // Add a repository link below the forecast grid.
-                const footerRow = table.createTFoot().insertRow();
-                const footerCell = footerRow.insertCell();
-                footerCell.colSpan = columnsPerDay * days + 1;
+                let issueText = "unknown";
+                try {
+                    const response = await fetch("issue_timestamp.txt");
+                    if (!response.ok) {
+                        throw new Error(`Could not load issue_timestamp.txt (${response.status})`);
+                    }
+                    const lines = (await response.text()).trim().split(/\r?\n/);
+                    issueText = lines[lines.length - 1] || "unknown";
+                } catch (error) {
+                    console.error("Could not load issue timestamp:", error);
+                }
+
+                // Show the latest timestamp for issued forecast and page refresh
+                const tableFooter = table.createTFoot();
+                const issueRow = tableFooter.insertRow();
+                const issueCell = issueRow.insertCell();
+                issueCell.colSpan = columnsPerDay * days + 1;
+                issueCell.textContent = `${issueText}`;
+
+                // Show link to GitHub repo.
+                const linkRow = tableFooter.insertRow();
+                const linkCell = linkRow.insertCell();
+                linkCell.colSpan = columnsPerDay * days + 1;
                 const link = document.createElement("a");
                 link.href = "https://github.com/jpolton/SynopticCharts";
                 link.textContent = "Return to code repo: github.com/jpolton/SynopticCharts";
-                footerCell.appendChild(link);
+                linkCell.appendChild(link);
                 document.body.appendChild(table);
             } catch (error) {
                 // Report loading or data errors instead of showing an incomplete grid.

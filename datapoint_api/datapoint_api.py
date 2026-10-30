@@ -29,6 +29,7 @@ To do:
 
 import os
 import re
+import datetime
 import requests
 import xmltodict
 import xml.etree.ElementTree as ET
@@ -212,10 +213,22 @@ class CHART():
                 with open(cls.ofile, 'wb') as out:
                     out.write(request_raw.content)
                 logger.info(f"Success: written {cls.ofile} from {url}")
-                # Write Issue timestamp to a file, if a new file has been obtained
-                with open("docs/issue_timestamp.txt", 'a', encoding="utf-8") as out:
-                    timestamp = re.search(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)', cls.ofile).group(1)
-                    out.write(cls.Issued_timestamp + ' : ' + timestamp + ' + ' + str(cls.hrs) + 'hrs' '\n')
+                # Record one UTC download time for each issue run.
+                timestamp_path = "docs/issue_timestamp.txt"
+                issue_already_recorded = False
+                if os.path.isfile(timestamp_path):
+                    with open(timestamp_path, encoding="utf-8") as source:
+                        issue_already_recorded = any(
+                            line.split(" : ", 1)[0] == cls.Issued_timestamp
+                            for line in source
+                        )
+
+                if not issue_already_recorded:
+                    recorded_at = datetime.datetime.now(datetime.timezone.utc).strftime(
+                        "%Y-%m-%dT%H:%M:%SZ"
+                    )
+                    with open(timestamp_path, 'a', encoding="utf-8") as out:
+                        out.write(f"Last forecast issued at: {cls.Issued_timestamp}. Page last updated: {recorded_at}\n")
 
             except ValueError:
                 logger.error(f"Failed request for {cls.ofile} from {url}")
@@ -226,4 +239,3 @@ class CHART():
                 logger.info(f"Forecast {cls.hrs} does not exist since {cls.ProductURI} is None")
 
         return
-
