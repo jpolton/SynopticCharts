@@ -113,7 +113,9 @@
                 const issueRow = tableFooter.insertRow();
                 const issueCell = issueRow.insertCell();
                 issueCell.colSpan = columnsPerDay * days + 1;
-                issueCell.textContent = `${issueText}`;
+                // split into 2 lines
+                issueCell.textContent = issueText.replace("Page last updated", "\nPage last updated");
+                issueCell.style.whiteSpace = "pre-line";
 
                 // Show link to GitHub repo.
                 const linkRow = tableFooter.insertRow();
