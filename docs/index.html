@@ -87,6 +87,10 @@
                         const image = document.createElement("img");
                         image.src = `${folderPath}${product.target_date}_forecastperiod_${product.forecast_lead}.gif`;
                         image.height = 150;
+                        // Add blue border around Analysis plot
+                        if (product.forecast_lead === 0) {
+                            image.style.border = "2px solid blue";
+                        }
                         image.addEventListener("error", () => image.remove(), { once: true });
                         cell.appendChild(image);
                     }
