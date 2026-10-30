@@ -68,7 +68,10 @@
                     const row = tableBody.insertRow();
                     const issueCell = document.createElement("th");
                     issueCell.scope = "row";
-                    issueCell.textContent = forecast.issued;
+                    issueCell.style.fontWeight = "normal";
+                    issueCell.style.fontSize = "8px";
+                    //issueCell.textContent = forecast.issued;
+                    issueCell.textContent = forecast.issued.replace("2026", "Issued:\n2026").replace("T", "\n");
                     row.appendChild(issueCell);
 
                     // Match each target-time column to its product; missing products leave
