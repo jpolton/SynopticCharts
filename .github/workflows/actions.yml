@@ -37,7 +37,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.9' # install the python version needed
+          python-version: '3.10' # install the python version needed
           cache: 'pip' # caching pip dependencies
 
       - name: install python packages
