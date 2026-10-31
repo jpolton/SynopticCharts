@@ -11,7 +11,7 @@ Python environment:
     ### Build python environment:
     ## Create an environment with coast installed
     yes | conda env remove --name synoptic_env
-    yes | conda create --name synoptic_env python=3.9
+    yes | conda create --name synoptic_env python=3.10
     conda activate synoptic_env
 
     ## install request for datapoint server requests
