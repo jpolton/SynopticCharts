@@ -1,49 +1,48 @@
-2026-11-14 00:23:58,309 INFO retrieve chart metadata
-2026-11-14 00:23:58,939 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_ASXX_Assistant_FC000.gif
-2026-11-14 00:23:59,729 INFO 200
-2026-11-14 00:23:59,729 INFO Success: written docs/charts/2026-11-13T12:00:00Z_forecastperiod_0.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_ASXX_Assistant_FC000.gif
-2026-11-14 00:23:59,730 INFO retrieve chart metadata
-2026-11-14 00:23:59,784 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_FSXX_FC012.gif
-2026-11-14 00:24:00,212 INFO 200
-2026-11-14 00:24:00,212 INFO Success: written docs/charts/2026-11-14T00:00:00Z_forecastperiod_12.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_FSXX_FC012.gif
-2026-11-14 00:24:00,213 INFO retrieve chart metadata
-2026-11-14 00:24:00,276 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_FSXX_FC024.gif
-2026-11-14 00:24:00,930 INFO 200
-2026-11-14 00:24:00,931 INFO Success: written docs/charts/2026-11-14T12:00:00Z_forecastperiod_24.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_FSXX_FC024.gif
-2026-11-14 00:24:00,931 INFO retrieve chart metadata
-2026-11-14 00:24:00,979 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC036.gif
-2026-11-14 00:24:01,698 INFO 200
-2026-11-14 00:24:01,699 INFO Success: written docs/charts/2026-11-15T00:00:00Z_forecastperiod_36.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC036.gif
-2026-11-14 00:24:01,700 INFO retrieve chart metadata
-2026-11-14 00:24:01,824 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC048.gif
-2026-11-14 00:24:02,447 INFO 200
-2026-11-14 00:24:02,447 INFO Success: written docs/charts/2026-11-15T12:00:00Z_forecastperiod_48.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC048.gif
-2026-11-14 00:24:02,448 INFO retrieve chart metadata
-2026-11-14 00:24:02,606 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC060.gif
-2026-11-14 00:24:03,207 INFO 200
-2026-11-14 00:24:03,207 INFO Success: written docs/charts/2026-11-16T00:00:00Z_forecastperiod_60.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC060.gif
-2026-11-14 00:24:03,208 INFO retrieve chart metadata
-2026-11-14 00:24:03,259 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC072.gif
-2026-11-14 00:24:03,867 INFO 200
-2026-11-14 00:24:03,867 INFO Success: written docs/charts/2026-11-16T12:00:00Z_forecastperiod_72.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC072.gif
-2026-11-14 00:24:03,868 INFO retrieve chart metadata
-2026-11-14 00:24:03,919 ERROR Failed request for forecast period 84: Forecast period, 084hrs, not found
-2026-11-14 00:24:03,920 INFO File docs/charts/2026-11-16T12:00:00Z_forecastperiod_72.gif already exists
-2026-11-14 00:24:03,920 INFO Forecast 84 does not exist since None is None
-2026-11-14 00:24:03,920 INFO retrieve chart metadata
-2026-11-14 00:24:04,010 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC096.gif
-2026-11-14 00:24:04,721 INFO 200
-2026-11-14 00:24:04,721 INFO Success: written docs/charts/2026-11-17T12:00:00Z_forecastperiod_96.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC096.gif
-2026-11-14 00:24:04,722 INFO retrieve chart metadata
-2026-11-14 00:24:04,864 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC120.gif
-2026-11-14 00:24:06,010 INFO 200
-2026-11-14 00:24:06,010 INFO Success: written docs/charts/2026-11-18T12:00:00Z_forecastperiod_120.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-13T1200/1200_MEDIUM_RANGE_FC120.gif
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_84.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_72.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_60.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_36.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_48.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_24.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_120.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_12.gif -> docs/charts/archive
-2026-11-14 00:24:06,012 INFO Moved: docs/charts/2026-11-12T12:00:00Z_forecastperiod_0.gif -> docs/charts/archive
+2026-11-14 14:25:12,366 INFO retrieve chart metadata
+2026-11-14 14:25:12,753 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_ASXX_Assistant_FC000.gif
+2026-11-14 14:25:13,441 INFO 200
+2026-11-14 14:25:13,442 INFO Success: written docs/charts/2026-11-14T00:00:00Z_forecastperiod_0.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_ASXX_Assistant_FC000.gif
+2026-11-14 14:25:13,443 INFO retrieve chart metadata
+2026-11-14 14:25:13,584 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_FSXX_FC012.gif
+2026-11-14 14:25:14,239 INFO 200
+2026-11-14 14:25:14,239 INFO Success: written docs/charts/2026-11-14T12:00:00Z_forecastperiod_12.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_FSXX_FC012.gif
+2026-11-14 14:25:14,240 INFO retrieve chart metadata
+2026-11-14 14:25:14,388 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_FSXX_FC024.gif
+2026-11-14 14:25:15,062 INFO 200
+2026-11-14 14:25:15,062 INFO Success: written docs/charts/2026-11-15T00:00:00Z_forecastperiod_24.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_FSXX_FC024.gif
+2026-11-14 14:25:15,063 INFO retrieve chart metadata
+2026-11-14 14:25:15,215 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC036.gif
+2026-11-14 14:25:15,880 INFO 200
+2026-11-14 14:25:15,880 INFO Success: written docs/charts/2026-11-15T12:00:00Z_forecastperiod_36.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC036.gif
+2026-11-14 14:25:15,881 INFO retrieve chart metadata
+2026-11-14 14:25:15,921 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC048.gif
+2026-11-14 14:25:16,348 INFO 200
+2026-11-14 14:25:16,348 INFO Success: written docs/charts/2026-11-16T00:00:00Z_forecastperiod_48.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC048.gif
+2026-11-14 14:25:16,349 INFO retrieve chart metadata
+2026-11-14 14:25:16,455 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC060.gif
+2026-11-14 14:25:17,165 INFO 200
+2026-11-14 14:25:17,166 INFO Success: written docs/charts/2026-11-16T12:00:00Z_forecastperiod_60.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC060.gif
+2026-11-14 14:25:17,167 INFO retrieve chart metadata
+2026-11-14 14:25:17,207 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC072.gif
+2026-11-14 14:25:17,779 INFO 200
+2026-11-14 14:25:17,779 INFO Success: written docs/charts/2026-11-17T00:00:00Z_forecastperiod_72.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC072.gif
+2026-11-14 14:25:17,780 INFO retrieve chart metadata
+2026-11-14 14:25:17,820 INFO retrieve chart: https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC084.gif
+2026-11-14 14:25:18,452 INFO 200
+2026-11-14 14:25:18,452 INFO Success: written docs/charts/2026-11-17T12:00:00Z_forecastperiod_84.gif from https://data.consumer-digital.api.metoffice.gov.uk/v1/surface-pressure/bw/2026-11-14T0000/0000_MEDIUM_RANGE_FC084.gif
+2026-11-14 14:25:18,453 INFO retrieve chart metadata
+2026-11-14 14:25:18,593 ERROR Failed request for forecast period 96: Forecast period, 096hrs, not found
+2026-11-14 14:25:18,594 INFO File docs/charts/2026-11-17T12:00:00Z_forecastperiod_84.gif already exists
+2026-11-14 14:25:18,594 INFO Forecast 96 does not exist since None is None
+2026-11-14 14:25:18,594 INFO retrieve chart metadata
+2026-11-14 14:25:18,634 ERROR Failed request for forecast period 120: Forecast period, 120hrs, not found
+2026-11-14 14:25:18,635 INFO File docs/charts/2026-11-17T12:00:00Z_forecastperiod_84.gif already exists
+2026-11-14 14:25:18,635 INFO Forecast 120 does not exist since None is None
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_72.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T12:00:00Z_forecastperiod_0.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_60.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_48.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_24.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_36.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_12.gif -> docs/charts/archive
+2026-11-14 14:25:18,636 INFO Moved: docs/charts/2026-11-13T00:00:00Z_forecastperiod_0.gif -> docs/charts/archive
