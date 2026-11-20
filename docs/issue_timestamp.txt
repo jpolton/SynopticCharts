@@ -407,3 +407,12 @@ Last forecast issued at: 2026-11-19T07:30:28Z. Page last updated: 2026-11-19T16:
 Last forecast issued at: 2026-11-19T07:30:28Z. Page last updated: 2026-11-19T16:43:04Z
 Last forecast issued at: 2026-11-19T07:30:28Z. Page last updated: 2026-11-19T16:43:05Z
 Last forecast issued at: 2026-11-19T07:30:28Z. Page last updated: 2026-11-19T16:43:05Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:21:59Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:00Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:01Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:02Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:02Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:03Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:04Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:05Z
+Last forecast issued at: 2026-11-19T19:30:28Z. Page last updated: 2026-11-20T01:22:06Z
