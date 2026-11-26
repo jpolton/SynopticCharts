@@ -1,5 +1,42 @@
 [
   {
+    "issued": "2026-11-26T07:30:28Z",
+    "products": [
+      {
+        "target_date": "2026-11-26T00:00:00Z",
+        "forecast_lead": 0
+      },
+      {
+        "target_date": "2026-11-26T12:00:00Z",
+        "forecast_lead": 12
+      },
+      {
+        "target_date": "2026-11-27T00:00:00Z",
+        "forecast_lead": 24
+      },
+      {
+        "target_date": "2026-11-27T12:00:00Z",
+        "forecast_lead": 36
+      },
+      {
+        "target_date": "2026-11-28T00:00:00Z",
+        "forecast_lead": 48
+      },
+      {
+        "target_date": "2026-11-28T12:00:00Z",
+        "forecast_lead": 60
+      },
+      {
+        "target_date": "2026-11-29T00:00:00Z",
+        "forecast_lead": 72
+      },
+      {
+        "target_date": "2026-11-29T12:00:00Z",
+        "forecast_lead": 84
+      }
+    ]
+  },
+  {
     "issued": "2026-11-25T22:11:04Z",
     "products": [
       {
@@ -193,43 +230,6 @@
       {
         "target_date": "2026-11-28T12:00:00Z",
         "forecast_lead": 120
-      }
-    ]
-  },
-  {
-    "issued": "2026-11-23T07:30:28Z",
-    "products": [
-      {
-        "target_date": "2026-11-23T00:00:00Z",
-        "forecast_lead": 0
-      },
-      {
-        "target_date": "2026-11-23T12:00:00Z",
-        "forecast_lead": 12
-      },
-      {
-        "target_date": "2026-11-24T00:00:00Z",
-        "forecast_lead": 24
-      },
-      {
-        "target_date": "2026-11-24T12:00:00Z",
-        "forecast_lead": 36
-      },
-      {
-        "target_date": "2026-11-25T00:00:00Z",
-        "forecast_lead": 48
-      },
-      {
-        "target_date": "2026-11-25T12:00:00Z",
-        "forecast_lead": 60
-      },
-      {
-        "target_date": "2026-11-26T00:00:00Z",
-        "forecast_lead": 72
-      },
-      {
-        "target_date": "2026-11-26T12:00:00Z",
-        "forecast_lead": 84
       }
     ]
   }
